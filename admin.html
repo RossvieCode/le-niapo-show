@@ -110,11 +110,11 @@
 
     <div class="adm-tools" data-admin-only>
       <div class="adm-tabs" role="tablist" aria-label="Filtrer par statut">
-        <button type="button" role="tab" class="adm-tab" data-tab="pending">En attente <span data-count="pending"></span></button>
-        <button type="button" role="tab" class="adm-tab" data-tab="unsent">Billets à envoyer <span data-count="unsent"></span></button>
-        <button type="button" role="tab" class="adm-tab" data-tab="confirmed">Payées <span data-count="confirmed"></span></button>
-        <button type="button" role="tab" class="adm-tab" data-tab="cancelled">Annulées <span data-count="cancelled"></span></button>
-        <button type="button" role="tab" class="adm-tab" data-tab="all">Toutes <span data-count="all"></span></button>
+        <button type="button" role="tab" class="adm-tab" aria-controls="list" data-tab="pending">En attente <span data-count="pending"></span></button>
+        <button type="button" role="tab" class="adm-tab" aria-controls="list" data-tab="unsent">Billets à envoyer <span data-count="unsent"></span></button>
+        <button type="button" role="tab" class="adm-tab" aria-controls="list" data-tab="confirmed">Payées <span data-count="confirmed"></span></button>
+        <button type="button" role="tab" class="adm-tab" aria-controls="list" data-tab="cancelled">Annulées <span data-count="cancelled"></span></button>
+        <button type="button" role="tab" class="adm-tab" aria-controls="list" data-tab="all">Toutes <span data-count="all"></span></button>
       </div>
       <div class="adm-tools-r">
         <label class="adm-search">
@@ -126,7 +126,7 @@
       </div>
     </div>
 
-    <div class="adm-list" id="list" aria-live="polite" data-admin-only></div>
+    <div class="adm-list" id="list" role="tabpanel" aria-label="Réservations" aria-live="polite" data-admin-only></div>
     <p class="adm-empty" id="empty" hidden></p>
   </main>
 </section>
@@ -158,7 +158,7 @@
 <div class="adm-toast" id="toast" role="status" hidden>
   <span id="toast-txt"></span>
   <a id="toast-wa" class="adm-toast-wa" href="#" target="_blank" rel="noopener" hidden>Envoyer les billets</a>
-  <button type="button" class="adm-toast-x" id="toast-x" aria-label="Fermer">×</button>
+  <button type="button" class="adm-toast-x" id="toast-x" aria-label="Fermer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>

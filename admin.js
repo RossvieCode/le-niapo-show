@@ -347,7 +347,7 @@
     const count = (s) => all.filter((r) => r.status === s).length;
     const counts = { pending: count('pending'), unsent: all.filter(unsent).length, confirmed: count('confirmed'), cancelled: count('cancelled'), all: all.length };
     $$('[data-count]').forEach((el) => { el.textContent = counts[el.dataset.count]; });
-    $$('.adm-tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === state.tab)));
+    $$('.adm-tab').forEach((t) => { const on = t.dataset.tab === state.tab; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
 
     const entries = entriesOf();
     const list = all.filter(matches);
@@ -366,7 +366,20 @@
   }
 
   /* ---------- interactions ---------- */
-  $$('.adm-tab').forEach((t) => t.addEventListener('click', () => { state.tab = t.dataset.tab; render(); }));
+  const tabs = $$('.adm-tab');
+  const pickTab = (t) => { state.tab = t.dataset.tab; render(); };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => pickTab(t));
+    // tablist keyboard pattern: arrows move and select, Home/End jump
+    t.addEventListener('keydown', (e) => {
+      const n = tabs.length;
+      const j = e.key === 'ArrowRight' ? (i + 1) % n : e.key === 'ArrowLeft' ? (i - 1 + n) % n : e.key === 'Home' ? 0 : e.key === 'End' ? n - 1 : -1;
+      if (j < 0) return;
+      e.preventDefault();
+      tabs[j].focus();
+      pickTab(tabs[j]);
+    });
+  });
   $('#q').addEventListener('input', (e) => { state.q = e.target.value.trim(); render(); });
 
   const dlg = $('#dlg-pay');

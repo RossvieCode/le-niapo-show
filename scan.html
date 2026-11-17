@@ -72,13 +72,13 @@
 
   <main class="sc-main">
     <div class="adm-tabs sc-tabs" role="tablist" aria-label="Mode">
-      <button type="button" role="tab" class="adm-tab" data-tab="scan">Scanner</button>
-      <button type="button" role="tab" class="adm-tab" data-tab="code">Code</button>
-      <button type="button" role="tab" class="adm-tab" data-tab="sale">Vente porte</button>
+      <button type="button" role="tab" class="adm-tab" id="t-scan" aria-controls="p-scan" data-tab="scan">Scanner</button>
+      <button type="button" role="tab" class="adm-tab" id="t-code" aria-controls="p-code" data-tab="code">Code</button>
+      <button type="button" role="tab" class="adm-tab" id="t-sale" aria-controls="p-sale" data-tab="sale">Vente porte</button>
     </div>
 
     <!-- scanner -->
-    <div id="p-scan" class="sc-pane">
+    <div id="p-scan" class="sc-pane" role="tabpanel" aria-labelledby="t-scan">
       <div class="sc-cam">
         <video id="video" playsinline muted></video>
         <div class="sc-frame" aria-hidden="true"></div>
@@ -91,7 +91,7 @@
     </div>
 
     <!-- manual code -->
-    <div id="p-code" class="sc-pane" hidden>
+    <div id="p-code" class="sc-pane" role="tabpanel" aria-labelledby="t-code" hidden>
       <form class="sc-code" id="code-form" novalidate>
         <label class="adm-search">
           <span class="sc-ln">LN-</span>
@@ -104,13 +104,13 @@
     </div>
 
     <!-- gate sale -->
-    <form id="p-sale" class="sc-pane adm-card sc-sale" hidden novalidate>
+    <form id="p-sale" class="sc-pane adm-card sc-sale" role="tabpanel" aria-labelledby="t-sale" hidden novalidate>
       <div class="tix-row sc-qty">
         <span class="lbl">Billets</span>
         <div class="qty-ctl">
-          <button type="button" class="qbtn minus ck-btn" id="s-dec" aria-label="Retirer un billet">−</button>
+          <button type="button" class="qbtn minus ck-btn" id="s-dec" aria-label="Retirer un billet"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
           <span class="qty-val" id="s-qty" aria-live="polite">1</span>
-          <button type="button" class="qbtn plus ck-btn" id="s-inc" aria-label="Ajouter un billet">+</button>
+          <button type="button" class="qbtn plus ck-btn" id="s-inc" aria-label="Ajouter un billet"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
         </div>
       </div>
       <fieldset class="adm-methods">
@@ -134,8 +134,8 @@
 </section>
 
 <!-- full-screen scan result -->
-<div class="sc-res" id="res" role="alert" hidden>
-  <div class="sc-res-ico" id="res-ico"></div>
+<div class="sc-res" id="res" role="alert" tabindex="-1" hidden>
+  <div class="sc-res-ico" id="res-ico" aria-hidden="true"></div>
   <div class="sc-res-h" id="res-h"></div>
   <div class="sc-res-p" id="res-p"></div>
   <div class="sc-res-tap">Touchez pour continuer</div>

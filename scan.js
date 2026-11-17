@@ -93,14 +93,26 @@
   /* ---------- tabs ---------- */
   function setTab(tab) {
     state.tab = tab;
-    $$('.sc-tabs .adm-tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === tab)));
+    $$('.sc-tabs .adm-tab').forEach((t) => { const on = t.dataset.tab === tab; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
     $('#p-scan').hidden = tab !== 'scan';
     $('#p-code').hidden = tab !== 'code';
     $('#p-sale').hidden = tab !== 'sale';
     if (tab === 'scan') startCam(); else stopCam();
     if (tab === 'code') $('#code-in').focus();
   }
-  $$('.sc-tabs .adm-tab').forEach((t) => t.addEventListener('click', () => setTab(t.dataset.tab)));
+  const tabs = $$('.sc-tabs .adm-tab');
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => setTab(t.dataset.tab));
+    // tablist keyboard pattern: arrows move and select, Home/End jump
+    t.addEventListener('keydown', (e) => {
+      const n = tabs.length;
+      const j = e.key === 'ArrowRight' ? (i + 1) % n : e.key === 'ArrowLeft' ? (i - 1 + n) % n : e.key === 'Home' ? 0 : e.key === 'End' ? n - 1 : -1;
+      if (j < 0) return;
+      e.preventDefault();
+      tabs[j].focus();
+      setTab(tabs[j].dataset.tab);
+    });
+  });
 
   /* ---------- feedback: full-screen colour, sound, vibration ---------- */
   let audio = null;
@@ -118,13 +130,21 @@
   }
 
   let resTimer = 0;
+  let resReturn = null;
+  const RES_ICONS = {
+    ok: '<path d="M5 12.5l4.5 4.5L19 7.5"></path>',
+    warn: '<path d="M12 6v8"></path><path d="M12 18.5v.01"></path>',
+    bad: '<path d="M6 6l12 12M18 6L6 18"></path>'
+  };
   function result(kind, title, detail) {
     const r = $('#res');
     r.className = 'sc-res ' + kind;
-    $('#res-ico').textContent = kind === 'ok' ? '✓' : kind === 'warn' ? '!' : '✕';
+    $('#res-ico').innerHTML = '<svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">' + (RES_ICONS[kind] || RES_ICONS.bad) + '</svg>';
     $('#res-h').textContent = title;
     $('#res-p').innerHTML = detail || '';
+    if (r.hidden) resReturn = document.activeElement;
     r.hidden = false;
+    r.focus({ preventScroll: true });
     state.paused = true;
     beep(kind === 'ok');
     clearTimeout(resTimer);
@@ -132,10 +152,17 @@
   }
   function closeResult() {
     clearTimeout(resTimer);
-    $('#res').hidden = true;
+    const r = $('#res');
+    if (r.hidden) return;
+    r.hidden = true;
     state.paused = false;
+    if (resReturn && document.contains(resReturn) && resReturn !== document.body) resReturn.focus({ preventScroll: true });
+    resReturn = null;
   }
   $('#res').addEventListener('click', closeResult);
+  $('#res').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); closeResult(); }
+  });
 
   function showCheckIn(c) {
     const who = esc(c.name) + ' · billet ' + esc(c.seq) + '/' + esc(c.qty) + '<br><small>' + esc(c.code) + '</small>';
