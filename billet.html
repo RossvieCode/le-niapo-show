@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Mes billets · Le Niapo Show</title>
+<meta name="description" content="Vos billets pour Le Niapo Show, 26 décembre 2026, Minagri Kacyiru, Kigali.">
+<meta name="theme-color" content="#140103">
+<meta property="og:title" content="Vos billets · Le Niapo Show">
+<meta property="og:description" content="26 déc. 2026 · Minagri Kacyiru, Kigali. Présentez le QR code à l'entrée.">
+<meta property="og:image" content="https://le-niapo-show.vercel.app/assets/og-image.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <div class="ck-bg" aria-hidden="true">
+    <img src="assets/niapo-flyer.jpg" alt="">
+    <img src="assets/niapo-flyer.jpg" alt="" class="flip">
+  </div>
+
+  <div class="col">
+    <header class="hdr">
+      <a class="brand" href="./" style="text-decoration:none">
+        <div class="logo">Creed <span>House</span></div>
+        <div class="sub">présente</div>
+      </a>
+      <span class="chip">26 DÉC.</span>
+    </header>
+
+    <main class="bt">
+      <p class="bt-msg" id="b-loading">Chargement de vos billets…</p>
+
+      <div class="bt-msg" id="b-error" hidden>
+        <h1 class="h2">Billet introuvable</h1>
+        <p>Ce lien n'est pas valide. Vérifiez qu'il est complet, ou demandez à Creed House Prod de vous le renvoyer sur WhatsApp.</p>
+      </div>
+
+      <div class="bt-msg" id="b-inactive" hidden>
+        <h1 class="h2" id="b-inactive-h">Billet pas encore actif</h1>
+        <p id="b-inactive-p"></p>
+      </div>
+
+      <section id="b-ok" hidden>
+        <div class="bt-head">
+          <h1 class="h2" id="b-title">Vos billets</h1>
+          <p class="lead" id="b-lead"></p>
+        </div>
+        <div class="bt-list" id="b-list"></div>
+        <div class="bt-tips">
+          <p><b>À l'entrée :</b> montrez le QR code, écran à luminosité maximale. Chaque QR ne sert qu'une seule fois.</p>
+          <button type="button" class="restart ck-btn" id="b-print">Enregistrer en PDF / imprimer</button>
+        </div>
+      </section>
+
+      <p class="foot">Le Niapo Show · Minagri, Kacyiru · Kigali<br>Organisé par <b>Creed House Prod</b></p>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="billet.js"></script>
+</body>
+</html>
