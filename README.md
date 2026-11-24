@@ -105,3 +105,13 @@ Push this folder to a new GitHub repo, then on vercel.com **Add New → Project 
 ## Tracking promoters
 
 Add `?ref=CODE` to the link you hand out, e.g. `https://le-niapo-show.vercel.app/?ref=INSTA`. The ref shows in the WhatsApp message, on the dashboard card and in the CSV.
+
+## lastlast26 (graduation party): `/lastlast26/`
+
+A one-screen invite page. Guests tap **Enter your code**, type the code and their name, and unlock the welcome card: date, dress code and location. Nothing about the location is in the page itself; it comes from the database only after a valid code.
+
+**Setup (once):** Supabase → SQL Editor → paste [`supabase/lastlast26.sql`](supabase/lastlast26.sql) → **Run**. The last result is your **host code** (`HOST-XXXXXX`). Keep it private.
+
+- **Stats:** type the host code in the page's code box. You see unlocks, unique phones, wrong tries, unlocks per code and the latest names.
+- **Codes:** `2026` works out of the box. Add one per organiser: `insert into public.lastlast_codes (code, label) values ('ALINE', 'Aline');`
+- **Address / live map:** `update public.lastlast_settings set address = '…', map_query = 'lat,lng';`

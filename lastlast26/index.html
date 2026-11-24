@@ -3,522 +3,519 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>lastlast26 · Graduation Party</title>
-<meta name="description" content="lastlast26: a graduation party. Wednesday 25 November, 6 PM. Confirm you're coming to get your access pass and the location.">
+<title>lastlast/2026</title>
+<meta name="description" content="Invite only. Enter your code.">
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#5b74dc">
 <meta property="og:type" content="website">
-<meta property="og:title" content="lastlast26 · Graduation Party">
-<meta property="og:description" content="Wed 25 Nov · 6 PM. Tap to confirm and get your access pass + location.">
+<meta property="og:title" content="lastlast/2026">
+<meta property="og:description" content="Invite only. You either have the code or you don't.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236a78e0'/%3E%3Cpath d='M8 26 32 16l24 10-24 10z' fill='%230f2236'/%3E%3Cpath d='M18 31v10c0 4 7 7 14 7s14-3 14-7V31l-14 6z' fill='%230f2236'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800;900&display=swap">
 <style>
 :root{
-  --ink:#0f2236; --ink-2:#2b3a55; --muted:#4a5573;
-  --sky-1:#5b74dc; --sky-2:#8d86e6; --sky-3:#c996e6; --sky-4:#eaa0d8; --sky-5:#f4a9a6; --sky-6:#f7b886;
-  --card:rgba(255,250,252,.82); --line:rgba(15,34,54,.12);
-  --gold:#f2b84b; --r:22px;
+  --ink:#0f2236; --ink-2:#2b3a55; --muted:#56607c;
+  --s1:#5670db; --s2:#8a85e8; --s3:#c497e8; --s4:#eaa2d6; --s5:#f4aaa2; --s6:#f8bc86;
+  --glass:rgba(255,250,252,.78); --line:rgba(15,34,54,.12);
+  --gold-1:#fff1c4; --gold-2:#f4c75b; --gold-3:#c98a1c;
   --display:'Fredoka',system-ui,sans-serif; --body:'Nunito',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.9,.25,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html,body{height:100%;overflow:hidden}
 body{
-  font-family:var(--body);color:var(--ink);background:var(--sky-2);
-  min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased;
+  background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 22%,var(--s3) 44%,var(--s4) 64%,var(--s5) 82%,var(--s6) 100%);
 }
-/* Whole-page sky: one long gradient so sections flow like a sunset */
-.sky{
-  position:relative;overflow:hidden;
-  background:linear-gradient(180deg,var(--sky-1) 0%,var(--sky-2) 18%,var(--sky-3) 38%,var(--sky-4) 58%,var(--sky-5) 78%,var(--sky-6) 100%);
-}
-.stars{position:absolute;inset:0;pointer-events:none}
-.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7;animation:tw 4s ease-in-out infinite}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+
+/* ---------- Scenery ---------- */
+.scene{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:tw 4s ease-in-out infinite}
 @keyframes tw{50%{opacity:.15}}
-
-.cloud{position:absolute;pointer-events:none;filter:drop-shadow(0 18px 30px rgba(90,60,140,.18))}
+.cloud{position:absolute;filter:drop-shadow(0 20px 34px rgba(90,60,140,.2))}
 .cloud svg{width:100%;height:auto;display:block}
-.drift{animation:drift 26s ease-in-out infinite alternate}
-.drift.slow{animation-duration:38s}
-@keyframes drift{to{transform:translateX(26px)}}
+.c1{width:min(560px,92vw);left:-22%;top:4%;animation:drift 30s ease-in-out infinite alternate}
+.c2{width:min(460px,78vw);right:-20%;top:38%;animation:drift 40s ease-in-out infinite alternate-reverse}
+.c3{width:min(380px,64vw);left:-16%;bottom:12%;animation:drift 34s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(30px)}}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:22vh;min-height:120px}
+.cap{position:absolute;top:-60px;width:28px;opacity:.85;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(115vh) rotate(340deg)}}
 
-.cap{position:absolute;width:34px;pointer-events:none;animation:fall 9s linear infinite;opacity:.9}
-@keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(320deg)}}
-
-.wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 16px}
-
-/* Nav */
-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.5px}
-.logo b{color:#fff;-webkit-text-stroke:0}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font:700 15px/1 var(--body);text-decoration:none;cursor:pointer;
-  background:var(--ink);color:#fff;border:0;border-radius:12px;padding:14px 20px;
-  transition:transform .15s ease,box-shadow .15s ease;
+/* ---------- Frame ---------- */
+.stage{
+  position:relative;z-index:2;height:100vh;height:100dvh;
+  display:grid;grid-template-rows:auto 1fr auto;
+  padding:max(16px,env(safe-area-inset-top)) 16px max(14px,env(safe-area-inset-bottom));
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,34,54,.25)}
-.btn:focus-visible,input:focus-visible,.seg label:focus-within{outline:3px solid #fff;outline-offset:2px}
-.btn.ghost{background:rgba(255,255,255,.7);color:var(--ink)}
-.btn.sm{padding:10px 16px;font-size:14px}
+.top{display:flex;justify-content:space-between;align-items:center;max-width:1100px;width:100%;margin:0 auto}
+.mark{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.4px}
+.mark b{color:var(--gold-2);-webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill;margin:0 1px}
+.stamp{font-weight:900;font-size:12px;letter-spacing:2.2px;text-transform:uppercase;background:rgba(15,34,54,.88);color:#fff;padding:8px 12px;border-radius:99px}
+.bottom{text-align:center;font-weight:800;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#fff;opacity:.9}
 
-/* Hero */
-.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 0 120px}
-.eyebrow{
-  display:inline-block;font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;
-  background:rgba(255,255,255,.55);padding:8px 14px;border-radius:99px;margin-bottom:22px
+.center{display:grid;place-items:center;min-height:0}
+.view{grid-area:1/1;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;
+  transition:opacity .45s var(--ease),transform .55s var(--ease),filter .45s var(--ease)}
+.view[hidden]{display:flex!important;opacity:0;transform:translateY(18px) scale(.97);filter:blur(6px);pointer-events:none;visibility:hidden}
+
+/* ---------- Intro ---------- */
+.eyebrow{font-weight:900;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-2);
+  background:rgba(255,255,255,.55);backdrop-filter:blur(6px);padding:8px 14px;border-radius:99px}
+h1{font-family:var(--display);font-weight:700;line-height:.82;letter-spacing:-.05em;margin:22px 0 8px;font-size:clamp(76px,19vw,210px)}
+h1 .l1{display:block}
+h1 .l2{display:inline-block;color:#fff;-webkit-text-stroke:.07em var(--ink);paint-order:stroke fill;
+  text-shadow:0 .06em 0 var(--ink),0 .16em .3em rgba(15,34,54,.22);transform:rotate(-6deg) translateY(.06em)}
+h1 .slash{display:inline-block;color:var(--gold-2);transform:translateY(-.02em) rotate(8deg);margin-right:.02em}
+.tag{max-width:330px;font-size:17px;line-height:1.45;font-weight:700;color:var(--ink-2);margin:26px 0 26px}
+.cta{
+  position:relative;display:inline-flex;align-items:center;gap:12px;
+  background:var(--ink);color:#fff;font-weight:900;font-size:17px;letter-spacing:.2px;
+  padding:18px 26px 18px 30px;border-radius:99px;
+  box-shadow:0 14px 30px rgba(15,34,54,.3),inset 0 1px 0 rgba(255,255,255,.12);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease)
 }
-h1{font-family:var(--display);font-weight:700;line-height:.86;letter-spacing:-3px;font-size:clamp(70px,17vw,190px)}
-h1 .row{display:block}
-h1 .wob{display:inline-block;transform:rotate(-8deg) translateY(.08em);color:#fff;
-  text-shadow:0 6px 0 var(--ink), 0 14px 30px rgba(15,34,54,.25);-webkit-text-stroke:4px var(--ink);paint-order:stroke fill}
-h1 .wob span{display:inline-block}
-h1 .wob span:nth-child(2){transform:rotate(14deg) translateY(-.06em)}
-.lede{max-width:460px;margin:30px auto 0;font-size:18px;line-height:1.5;color:var(--ink-2)}
-.when{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:26px 0 30px}
-.pill{background:var(--card);backdrop-filter:blur(6px);border-radius:14px;padding:12px 16px;font-weight:800;display:flex;align-items:center;gap:8px}
-.pill svg{flex:none}
+.cta:hover{transform:translateY(-2px);box-shadow:0 20px 40px rgba(15,34,54,.35)}
+.cta .k{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold-1),var(--gold-2));color:var(--ink)}
+.cta::after{content:"";position:absolute;inset:-6px;border-radius:99px;border:2px solid rgba(255,255,255,.6);animation:ring 2.4s ease-out infinite}
+@keyframes ring{0%{opacity:.9;transform:scale(.96)}100%{opacity:0;transform:scale(1.12)}}
+:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-.count{display:flex;gap:10px;justify-content:center;margin-top:34px}
-.count div{background:rgba(15,34,54,.88);color:#fff;border-radius:14px;min-width:70px;padding:12px 8px}
-.count b{display:block;font-family:var(--display);font-size:30px;font-weight:600;line-height:1}
-.count small{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:.75}
-
-/* Story */
-.story{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 0}
-.story p{max-width:520px;font-size:clamp(19px,2.6vw,24px);line-height:1.55;color:var(--ink-2);font-weight:600}
-.story p em{font-style:normal;font-family:var(--display);color:var(--ink);font-weight:700}
-
-/* Details grid */
-.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;padding-bottom:70px}
-.det{background:var(--card);backdrop-filter:blur(8px);border-radius:var(--r);padding:22px}
-.det h3{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.det p{font-family:var(--display);font-size:22px;font-weight:600;line-height:1.2}
-.det p small{display:block;font-family:var(--body);font-size:14px;font-weight:600;color:var(--muted);margin-top:4px}
-.lock{display:inline-flex;align-items:center;gap:6px}
-
-/* Curved line + hills */
-.finale{position:relative;text-align:center;padding-top:30px}
-.finale .pre{font-size:18px;font-weight:600;color:var(--ink-2);max-width:340px;margin:0 auto}
-.arc{width:min(760px,100%);margin:-6px auto 0;display:block;overflow:visible}
-.arc text{font-family:var(--display);font-weight:700;font-size:54px;fill:var(--ink);letter-spacing:-1px}
-
-/* RSVP section */
-.rsvp{position:relative;z-index:3;padding:10px 0 60px}
-.panel{
-  max-width:520px;margin:0 auto;background:var(--card);backdrop-filter:blur(12px);
-  border-radius:28px;padding:28px 22px;box-shadow:0 30px 60px rgba(90,40,90,.18)
+/* ---------- Cards ---------- */
+.card{
+  width:min(420px,100%);max-height:calc(100dvh - 120px);overflow:auto;overscroll-behavior:contain;
+  background:var(--glass);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.7);border-radius:30px;padding:26px 22px 22px;text-align:left;
+  box-shadow:0 40px 80px rgba(70,30,100,.22)
 }
-.panel h2{font-family:var(--display);font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1}
-.panel .sub{color:var(--muted);margin:8px 0 22px;font-weight:600}
-.field{margin-bottom:16px}
-.field label,.legend{display:block;font-weight:800;font-size:14px;margin-bottom:7px}
-.field label small{font-weight:600;color:var(--muted)}
-input[type=text],input[type=tel]{
-  width:100%;font:600 17px var(--body);color:var(--ink);background:#fff;
-  border:2px solid var(--line);border-radius:12px;padding:13px 14px;outline:none
+.card h2{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:-.8px;line-height:1}
+.card .hint{color:var(--muted);font-weight:700;margin:8px 0 20px;font-size:15px}
+.lbl{display:block;font-weight:900;font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.code{
+  width:100%;text-align:center;font-family:var(--display);font-weight:700;font-size:38px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:18px;
+  padding:14px 10px 14px calc(10px + .32em);outline:none;transition:border-color .2s,box-shadow .2s
 }
-input[type=text]:focus,input[type=tel]:focus{border-color:var(--sky-1)}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.seg label{position:relative;cursor:pointer}
-.seg input{position:absolute;opacity:0;inset:0}
-.seg span{display:block;text-align:center;padding:12px 6px;border-radius:12px;background:#fff;border:2px solid var(--line);font-weight:800}
-.seg input:checked + span{background:var(--ink);color:#fff;border-color:var(--ink)}
-.err{color:#b3123b;font-weight:700;font-size:14px;min-height:20px;margin:-4px 0 8px}
-.panel .btn{width:100%;padding:17px;font-size:17px}
-.fine{font-size:13px;color:var(--muted);text-align:center;margin-top:12px;font-weight:600}
+.code::placeholder{color:#c9cbe0;letter-spacing:.32em}
+.name{width:100%;font:800 17px var(--body);color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px;outline:none}
+.code:focus,.name:focus{border-color:var(--s1);box-shadow:0 0 0 4px rgba(86,112,219,.18)}
+.gap{height:16px}
+.err.ok{color:#1f6b3a}
+.err{min-height:22px;margin:12px 0 4px;color:#a8123a;font-weight:800;font-size:14px;text-align:center}
+.go{width:100%;background:var(--ink);color:#fff;font-weight:900;font-size:17px;padding:17px;border-radius:16px;
+  display:flex;justify-content:center;align-items:center;gap:10px;transition:transform .15s,opacity .2s}
+.go:active{transform:scale(.98)}
+.go[disabled]{opacity:.6;cursor:wait}
+.spin{width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;animation:sp .7s linear infinite;display:none}
+.go[disabled] .spin{display:block}
+@keyframes sp{to{transform:rotate(360deg)}}
+.back{display:block;margin:14px auto 0;font-weight:800;font-size:14px;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
 
-/* Hills */
-.hills{position:relative;display:block;width:100%;height:auto;margin-top:-140px;z-index:1}
-
-/* Pass */
-.pass-wrap{display:none}
-.has-pass .pass-wrap{display:block}
-.has-pass .form-wrap{display:none}
-.ticket{
-  position:relative;max-width:440px;margin:0 auto;border-radius:26px;overflow:hidden;
-  background:#fff;box-shadow:0 30px 60px rgba(60,30,90,.25);
-  animation:pop .6s cubic-bezier(.2,1.4,.4,1) both
+/* ---------- Reward ---------- */
+.reward{padding:0;overflow:auto}
+.foil{
+  position:relative;overflow:hidden;padding:18px 18px 16px;color:var(--ink);
+  background:linear-gradient(120deg,var(--gold-1) 0%,var(--gold-2) 38%,#ffe7a3 52%,var(--gold-2) 66%,var(--gold-3) 100%);
 }
-@keyframes pop{from{transform:translateY(30px) scale(.94);opacity:0}}
-.t-top{
-  padding:22px 22px 26px;color:var(--ink);
-  background:linear-gradient(160deg,var(--sky-1),var(--sky-3) 55%,var(--sky-5));
-}
-.t-top .row{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase}
-.t-top .ok{background:#fff;color:var(--ink);border-radius:99px;padding:6px 10px;letter-spacing:1px}
-.t-brand{font-family:var(--display);font-weight:700;font-size:44px;letter-spacing:-2px;line-height:1;margin-top:18px;color:#fff;-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
-.t-name{font-family:var(--display);font-weight:600;font-size:26px;margin-top:14px;line-height:1.1;word-break:break-word}
-.t-adm{font-weight:700;opacity:.85}
-.perf{position:relative;height:0;border-top:2px dashed var(--line);margin:0 22px}
-.perf::before,.perf::after{content:"";position:absolute;top:-14px;width:28px;height:28px;border-radius:50%;background:var(--sky-4)}
-.perf::before{left:-36px}.perf::after{right:-36px}
-.t-body{padding:20px 22px 22px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
-.t-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
-.t-meta h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
-.t-meta p{font-weight:800;font-size:15px}
-.t-qr{width:112px;height:112px;border-radius:12px;border:2px solid var(--line);padding:4px;background:#fff}
-.t-qr svg{width:100%;height:100%;display:block}
-.t-code{grid-column:1/-1;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;letter-spacing:3px;font-size:14px;color:var(--muted)}
+.foil::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.75) 48%,transparent 62%);
+  transform:translateX(-120%);animation:shine 3.2s 1s ease-in-out infinite}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+.badge{display:inline-flex;align-items:center;gap:7px;font-weight:900;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;background:var(--ink);color:var(--gold-1);padding:7px 11px;border-radius:99px}
+.foil h2{font-size:24px;margin-top:12px;line-height:1.05;letter-spacing:-.6px}
+.foil p{font-weight:800;margin-top:5px;opacity:.85}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 18px 0}
+.tile{background:#fff;border-radius:18px;padding:13px 14px;box-shadow:0 6px 16px rgba(15,34,54,.06)}
+.tile h4{display:flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);font-weight:900}
+.tile p{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.1;margin-top:6px}
+.tile small{display:block;font-weight:700;font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.3}
+.map{position:relative;display:block;margin:10px 18px 0;height:116px;border-radius:18px;overflow:hidden;background:#efe8f7;box-shadow:inset 0 0 0 1px var(--line);text-decoration:none;color:var(--ink)}
+.mapfill,.mapfill iframe,.mapfill svg{position:absolute;inset:0;width:100%;height:100%;border:0}
+.venue{position:absolute;left:10px;right:10px;bottom:10px;display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.94);border-radius:12px;padding:9px 11px;box-shadow:0 6px 18px rgba(15,34,54,.15);font-size:14px}
+.venue b{font-family:var(--display);font-weight:600;font-size:16px;white-space:nowrap}
+.venue em{font-style:normal;font-weight:700;color:var(--muted);font-size:12.5px;margin-left:auto;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acts{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;padding:12px 18px 12px}
+.acts a,.acts button{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:15px 10px;font-weight:900;font-size:15px;text-decoration:none}
+.acts .p{background:var(--ink);color:#fff}
+.acts .s{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.who{text-align:center;font-weight:800;font-size:12px;color:var(--muted);padding:0 18px 14px;letter-spacing:.3px}
+.who button{text-decoration:underline;text-underline-offset:2px;font-weight:800}
 
-.loc{max-width:440px;margin:18px auto 0;background:var(--card);backdrop-filter:blur(10px);border-radius:24px;overflow:hidden;box-shadow:0 20px 40px rgba(60,30,90,.15)}
-.loc-head{padding:18px 20px 12px}
-.loc-head h3{font-family:var(--display);font-size:24px;font-weight:700}
-.loc-head p{color:var(--muted);font-weight:600;font-size:15px;margin-top:2px}
-.map{position:relative;aspect-ratio:4/3;background:#e9e3f5}
-.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.map-art{position:absolute;inset:0;display:block;width:100%;height:100%;text-decoration:none}
-.map-art svg{width:100%;height:100%;display:block}
-.map-art .tap{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);white-space:nowrap}
-.loc-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px}
-.loc-actions .wide{grid-column:1/-1}
-.after{text-align:center;margin:20px 0 0}
-.after button{background:none;border:0;font:700 14px var(--body);color:var(--ink);text-decoration:underline;cursor:pointer}
+/* ---------- Host stats ---------- */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+.kpi{background:#fff;border-radius:16px;padding:10px 6px;text-align:center;box-shadow:inset 0 0 0 1px var(--line)}
+.kpi b{display:block;font-family:var(--display);font-size:30px;font-weight:700;line-height:1}
+.kpi span{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.bars{display:grid;gap:8px;margin-bottom:16px}
+.bar{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-weight:800;font-size:14px}
+.bar .track{grid-column:1/-1;height:8px;border-radius:9px;background:rgba(15,34,54,.08);overflow:hidden}
+.bar .fill{height:100%;border-radius:9px;background:linear-gradient(90deg,var(--s1),var(--s3))}
+.bar em{font-style:normal;color:var(--muted);font-weight:700}
+.list{display:grid;gap:6px;max-height:30dvh;overflow:auto}
+.li{display:flex;justify-content:space-between;gap:10px;background:#fff;border-radius:12px;padding:10px 12px;font-weight:800;font-size:14px}
+.li span{color:var(--muted);font-weight:700;white-space:nowrap}
+.hostbar{display:flex;gap:10px;margin-top:14px}
+.hostbar button{flex:1;padding:13px;border-radius:12px;font-weight:900;background:#fff;box-shadow:inset 0 0 0 2px var(--line)}
+.hostbar .p{background:var(--ink);color:#fff;box-shadow:none}
+.empty{color:var(--muted);font-weight:700;text-align:center;padding:10px}
 
-footer{position:relative;z-index:2;text-align:center;padding:26px 16px 40px;font-weight:700;color:#fff;background:#2c5a3a}
-footer small{display:block;opacity:.7;font-weight:600;margin-top:4px}
+canvas#fx{position:fixed;inset:0;z-index:5;pointer-events:none}
 
-@media (max-width:560px){
-  .hero{min-height:86vh}
-  h1{letter-spacing:-2px}
-  h1 .wob{-webkit-text-stroke:3px var(--ink)}
-  .arc text{font-size:60px}
-  .hills{margin-top:-60px}
-  .t-body{grid-template-columns:1fr}
-  .t-qr{margin:0 auto}
+@media (max-height:700px){
+  .bottom{display:none}
+  .map{height:92px}
+  .duo{padding-top:12px}
+  .tile{padding:10px 12px}
+  .tile small{display:none}
+  .foil{padding:14px 16px 12px}
+  .foil h2{font-size:21px;margin-top:9px}
+  .card{max-height:calc(100dvh - 80px)}
+  .acts{padding:10px 16px}
+  .who{padding-bottom:10px}
+  h1{font-size:clamp(64px,15vh,150px);margin:14px 0 4px}
+  .tag{margin:16px 0}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .cap{display:none}
 }
-@media print{
-  body{background:#fff}
-  .sky>*:not(.rsvp),.rsvp>.wrap>*:not(.pass-wrap),.loc-actions,.after,footer,nav,.cap,.cloud,.stars,.hills{display:none!important}
-  .sky{background:#fff}
-  .ticket,.loc{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
-  .t-top{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-}
 </style>
 </head>
 <body>
 
-<!-- Reusable original cloud shape: overlapping circles with a soft pink-to-lavender shade -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <radialGradient id="cg" cx="40%" cy="30%" r="80%">
-      <stop offset="0" stop-color="#fffaf6"/>
-      <stop offset=".55" stop-color="#f6e1ea"/>
-      <stop offset="1" stop-color="#c7c3e6"/>
+      <stop offset="0" stop-color="#fffaf6"/><stop offset=".55" stop-color="#f6e1ea"/><stop offset="1" stop-color="#c7c3e6"/>
     </radialGradient>
     <symbol id="cloud" viewBox="0 0 400 220">
-      <g fill="url(#cg)">
-        <circle cx="110" cy="140" r="70"/><circle cx="180" cy="95" r="85"/>
-        <circle cx="265" cy="120" r="72"/><circle cx="325" cy="160" r="55"/>
-        <circle cx="60" cy="175" r="45"/><rect x="50" y="150" width="310" height="70" rx="35"/>
-      </g>
+      <g fill="url(#cg)"><circle cx="110" cy="140" r="70"/><circle cx="180" cy="95" r="85"/><circle cx="265" cy="120" r="72"/>
+      <circle cx="325" cy="160" r="55"/><circle cx="60" cy="175" r="45"/><rect x="50" y="150" width="310" height="70" rx="35"/></g>
     </symbol>
     <symbol id="capi" viewBox="0 0 64 48">
-      <path d="M2 16 32 4l30 12-30 12z" fill="#0f2236"/>
-      <path d="M14 22v12c0 5 8 9 18 9s18-4 18-9V22l-18 7z" fill="#1d3557"/>
-      <path d="M52 18v16" stroke="#f2b84b" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="52" cy="36" r="3" fill="#f2b84b"/>
+      <path d="M2 16 32 4l30 12-30 12z" fill="#0f2236"/><path d="M14 22v12c0 5 8 9 18 9s18-4 18-9V22l-18 7z" fill="#1d3557"/>
+      <path d="M52 18v16" stroke="#f4c75b" stroke-width="3" stroke-linecap="round"/><circle cx="52" cy="36" r="3" fill="#f4c75b"/>
     </symbol>
   </defs>
 </svg>
 
-<div class="sky" id="top">
-  <div class="stars" id="stars" aria-hidden="true"></div>
-
-  <!-- Clouds -->
-  <div class="cloud drift" style="width:min(620px,95vw);left:-14%;top:8vh" aria-hidden="true"><svg><use href="#cloud"/></svg></div>
-  <div class="cloud drift slow" style="width:min(420px,70vw);right:-12%;top:46vh" aria-hidden="true"><svg><use href="#cloud"/></svg></div>
-  <div class="cloud drift" style="width:min(560px,90vw);right:-18%;top:118vh" aria-hidden="true"><svg><use href="#cloud"/></svg></div>
-  <div class="cloud drift slow" style="width:min(480px,80vw);left:-16%;top:190vh" aria-hidden="true"><svg><use href="#cloud"/></svg></div>
-
-  <div class="wrap">
-    <nav>
-      <div class="logo">lastlast<b>26</b></div>
-      <a class="btn sm" href="#rsvp">RSVP</a>
-    </nav>
-
-    <header class="hero">
-      <span class="eyebrow">Class of 2026 · Graduation party</span>
-      <h1>
-        <span class="row">lastlast</span>
-        <span class="row"><span class="wob"><span>2</span><span>6</span></span></span>
-      </h1>
-      <p class="lede">The last exam is done. One last last night to celebrate it, and I want you there.</p>
-      <div class="when">
-        <span class="pill"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span id="dateLabel">Wed 25 Nov</span></span>
-        <span class="pill"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="timeLabel">6:00 PM</span></span>
-      </div>
-      <a class="btn" href="#rsvp">I'm coming →</a>
-      <div class="count" id="count" aria-label="Countdown to the party">
-        <div><b id="cd-d">0</b><small>days</small></div>
-        <div><b id="cd-h">0</b><small>hrs</small></div>
-        <div><b id="cd-m">0</b><small>min</small></div>
-        <div><b id="cd-s">0</b><small>sec</small></div>
-      </div>
-    </header>
-
-    <section class="story">
-      <p>Years of deadlines, all-nighters and <em>"just one more chapter"</em>. Now it's done. Food, music, good people and one last last party before everybody goes their own way.</p>
-    </section>
-
-    <section class="details" aria-label="Party details">
-      <div class="det"><h3>When</h3><p>Wednesday 25 Nov<small>From 6:00 PM till late</small></p></div>
-      <div class="det"><h3>Where</h3><p><span class="lock"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>The house</span><small>Location unlocks on your pass</small></p></div>
-      <div class="det"><h3>Bring</h3><p>Your best fit<small>And your good energy</small></p></div>
-    </section>
-
-    <div class="finale">
-      <p class="pre">Because after all those years of studying,</p>
-      <svg class="arc" viewBox="0 0 760 210" aria-label="we deserve one last last">
-        <path id="arcPath" d="M60 190 Q380 -10 700 190" fill="none"/>
-        <text text-anchor="middle"><textPath href="#arcPath" startOffset="50%">we deserve one last last</textPath></text>
-      </svg>
-    </div>
-  </div>
-
-  <!-- Original sunset hills, trees and graduation caps -->
-  <svg class="hills" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<div class="scene" aria-hidden="true">
+  <div class="stars" id="stars"></div>
+  <div class="cloud c1"><svg><use href="#cloud"/></svg></div>
+  <div class="cloud c2"><svg><use href="#cloud"/></svg></div>
+  <div class="cloud c3"><svg><use href="#cloud"/></svg></div>
+  <svg class="hills" viewBox="0 0 1440 300" preserveAspectRatio="none">
     <defs>
-      <linearGradient id="h1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8708f"/><stop offset="1" stop-color="#8e3f6e"/></linearGradient>
-      <linearGradient id="h2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5f9a52"/><stop offset="1" stop-color="#2c5a3a"/></linearGradient>
+      <linearGradient id="hp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9739a"/><stop offset="1" stop-color="#93427a"/></linearGradient>
+      <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#609c55"/><stop offset="1" stop-color="#2c5a3a"/></linearGradient>
     </defs>
-    <path d="M0 300 L260 150 L420 250 L620 60 L820 240 L980 130 L1200 260 L1440 170 V420 H0Z" fill="url(#h1)" opacity=".9"/>
-    <path d="M620 60 L680 115 L650 110 L620 135 L590 108 L565 112Z" fill="#f6c7c9" opacity=".8"/>
-    <path d="M0 340 C200 290 360 330 520 320 C720 305 860 270 1040 300 C1220 330 1340 300 1440 290 V420 H0Z" fill="url(#h2)"/>
-    <g fill="#3f7a44">
-      <circle cx="90" cy="320" r="46"/><circle cx="150" cy="300" r="40"/><circle cx="40" cy="330" r="34"/>
-      <circle cx="1330" cy="295" r="48"/><circle cx="1390" cy="315" r="40"/><circle cx="1270" cy="318" r="34"/>
-    </g>
-    <path d="M0 380 C300 350 600 375 900 365 C1150 357 1300 370 1440 360 V420 H0Z" fill="#2c5a3a"/>
+    <path d="M0 200 L240 90 L400 170 L620 20 L840 160 L1000 70 L1220 180 L1440 100 V300 H0Z" fill="url(#hp)" opacity=".85"/>
+    <path d="M0 240 C220 200 380 235 560 228 C760 220 900 190 1080 214 C1250 236 1350 218 1440 210 V300 H0Z" fill="url(#hg)"/>
+    <g fill="#3d7743"><circle cx="70" cy="236" r="36"/><circle cx="122" cy="222" r="30"/><circle cx="1360" cy="214" r="38"/><circle cx="1405" cy="230" r="30"/></g>
   </svg>
-
-  <section class="rsvp" id="rsvp">
-    <div class="wrap">
-      <div class="form-wrap">
-        <form class="panel" id="form" novalidate>
-          <h2>Are you coming?</h2>
-          <p class="sub">Confirm and you'll get your access pass with the house location.</p>
-          <div class="field">
-            <label for="name">Your name</label>
-            <input type="text" id="name" name="name" autocomplete="name" placeholder="First and last name" maxlength="60" required>
-          </div>
-          <div class="field">
-            <label for="phone">Phone <small>(optional)</small></label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+250 7…" maxlength="20">
-          </div>
-          <div class="field">
-            <span class="legend" id="gl">How many of you?</span>
-            <div class="seg" role="radiogroup" aria-labelledby="gl">
-              <label><input type="radio" name="guests" value="1" checked><span>Just me</span></label>
-              <label><input type="radio" name="guests" value="2"><span>Me +1</span></label>
-              <label><input type="radio" name="guests" value="3"><span>Me +2</span></label>
-            </div>
-          </div>
-          <p class="err" id="err" role="alert"></p>
-          <button class="btn" type="submit">Confirm, I'm coming</button>
-          <p class="fine">Your pass stays on this phone. Show it at the door.</p>
-        </form>
-      </div>
-
-      <div class="pass-wrap" id="passWrap" aria-live="polite">
-        <article class="ticket" aria-label="Your access pass">
-          <div class="t-top">
-            <div class="row"><span>Access pass</span><span class="ok">✓ Confirmed</span></div>
-            <div class="t-brand">lastlast26</div>
-            <div class="t-name" id="pName">Guest</div>
-            <div class="t-adm" id="pAdmit">Admits 1</div>
-          </div>
-          <div class="perf"></div>
-          <div class="t-body">
-            <div class="t-meta">
-              <div><h4>Date</h4><p>Wed 25 Nov</p></div>
-              <div><h4>Time</h4><p>6:00 PM</p></div>
-              <div><h4>Venue</h4><p id="pVenue">The house</p></div>
-              <div><h4>Dress</h4><p>Best fit</p></div>
-            </div>
-            <div class="t-qr" id="pQr" role="img" aria-label="Pass QR code"></div>
-            <div class="t-code" id="pCode">LL26-0000</div>
-          </div>
-        </article>
-
-        <div class="loc">
-          <div class="loc-head">
-            <h3>📍 The location</h3>
-            <p id="locText">Tap the map for directions in Google Maps.</p>
-          </div>
-          <div class="map" id="map"></div>
-          <div class="loc-actions">
-            <a class="btn wide" id="dirBtn" target="_blank" rel="noopener">Open in Google Maps</a>
-            <button class="btn ghost" id="calBtn" type="button">Add to calendar</button>
-            <button class="btn ghost" id="saveBtn" type="button">Save pass</button>
-          </div>
-        </div>
-        <p class="after"><button type="button" id="resetBtn">Not you? Change RSVP</button></p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    lastlast26 · Class of 2026
-    <small>See you on Wednesday 🎓</small>
-  </footer>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<div class="stage">
+  <div class="top">
+    <div class="mark">lastlast<b>/</b>26</div>
+    <div class="stamp">25.11 · 21:00</div>
+  </div>
+
+  <main class="center">
+
+    <!-- 1. Intro -->
+    <section class="view" id="v-intro" aria-label="lastlast 2026">
+      <span class="eyebrow">Graduation · Invite only</span>
+      <h1><span class="l1">lastlast</span><span class="l2"><span class="slash">/</span>2026</span></h1>
+      <p class="tag">One night, one code. If you were invited, you have it.</p>
+      <button class="cta" id="openCode" type="button">Enter your code
+        <span class="k"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 9.2-9.2M17 6l3 3M14 9l2 2"/></svg></span>
+      </button>
+    </section>
+
+    <!-- 2. Code -->
+    <section class="view" id="v-code" hidden aria-label="Enter your code">
+      <form class="card" id="form" novalidate autocomplete="off">
+        <h2>Got the code?</h2>
+        <p class="hint">It's in the message that invited you.</p>
+        <label class="lbl" for="code">Code</label>
+        <input class="code" id="code" name="code" placeholder="••••" maxlength="24" autocapitalize="characters" spellcheck="false" inputmode="text" enterkeyhint="next">
+        <div class="gap"></div>
+        <label class="lbl" for="guest">Your name</label>
+        <input class="name" id="guest" name="guest" placeholder="So we know who's coming" maxlength="60" autocomplete="name" enterkeyhint="go">
+        <p class="err" id="err" role="alert"></p>
+        <button class="go" id="go" type="submit"><span class="spin" aria-hidden="true"></span><span id="goTxt">Unlock</span></button>
+        <button class="back" type="button" data-to="intro">Back</button>
+      </form>
+    </section>
+
+    <!-- 3. Reward -->
+    <section class="view" id="v-reward" hidden aria-label="Your invitation">
+      <article class="card reward" aria-live="polite">
+        <div class="foil">
+          <span class="badge">★ Premium access unlocked</span>
+          <h2 id="rTitle">Welcome to our graduation premium event</h2>
+          <p id="rName"></p>
+        </div>
+        <div class="duo">
+          <div class="tile">
+            <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>When</h4>
+            <p id="rWhen">Wed 25 Nov<br>9:00 PM</p><small>Doors open at 9</small>
+          </div>
+          <div class="tile">
+            <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 6l2 4 2-1v12h8V9l2 1 2-4-4-3a4 4 0 0 1-8 0z"/></svg>Dress code</h4>
+            <p id="rDress">Casual</p><small>Clean &amp; comfy. Sneakers welcome, no suits.</small>
+          </div>
+        </div>
+        <a class="map" id="rMap" target="_blank" rel="noopener" aria-label="Open the location in Google Maps">
+          <span class="mapfill" id="rMapFill"></span>
+          <span class="venue"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><b id="rVenue">The house</b><em id="rAddr">Private · don't share</em></span>
+        </a>
+        <div class="acts">
+          <a class="p" id="rDir" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-8-8 18-2-8z"/></svg>Get directions</a>
+          <button class="s" id="rCal" type="button"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M12 13v5M9.5 15.5h5"/></svg>Calendar</button>
+        </div>
+        <p class="who"><span id="rVia"></span> · <button type="button" id="rReset">Not you?</button></p>
+      </article>
+    </section>
+
+    <!-- 4. Host -->
+    <section class="view" id="v-host" hidden aria-label="Host stats">
+      <div class="card">
+        <span class="badge">Host view</span>
+        <h2 style="margin-top:12px">Who's unlocked it</h2>
+        <div class="kpis">
+          <div class="kpi"><b id="kTotal">0</b><span>Unlocks</span></div>
+          <div class="kpi"><b id="kDev">0</b><span>Phones</span></div>
+          <div class="kpi"><b id="kMiss">0</b><span>Misses</span></div>
+        </div>
+        <span class="lbl">By code</span>
+        <div class="bars" id="bars"></div>
+        <span class="lbl">Latest</span>
+        <div class="list" id="list"></div>
+        <div class="hostbar">
+          <button type="button" id="hRefresh" class="p">Refresh</button>
+          <button type="button" id="hExit">Exit</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="bottom">Class of 2026</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="../config.js"></script>
 <script>
-/* ======================================================================
-   Edit these to change the party details.
-   ====================================================================== */
-const PARTY = {
-  start: '2026-11-25T18:00:00+02:00',   // Wed 25 Nov 2026, 6 PM Kigali time
-  end:   '2026-11-26T01:00:00+02:00',
-  venueName: 'The house',
-  mapsLink: 'https://maps.app.goo.gl/qrMXjm4ge2rzgE1j8',
-  // For a live embedded map, put the address or "lat,lng" here, e.g. '-1.9441,30.0619'.
-  // Left empty, the pass shows an illustrated map that opens mapsLink.
-  mapQuery: ''
-};
-/* ====================================================================== */
+/* Times for the calendar file. Everything else (codes, location, dress code) lives in the database:
+   see supabase/lastlast26.sql. */
+const START = '2026-11-25T21:00:00+02:00';
+const END   = '2026-11-26T03:00:00+02:00';
 
-const KEY = 'lastlast26-pass';
 const $ = id => document.getElementById(id);
+const KEY = 'lastlast26';
 const store = {
-  get(){ try { return JSON.parse(localStorage.getItem(KEY)); } catch(e){ return null; } },
-  set(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} },
-  clear(){ try { localStorage.removeItem(KEY); } catch(e){} }
+  get(k){ try { return JSON.parse(localStorage.getItem(KEY + k)); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(KEY + k, JSON.stringify(v)); } catch(e){} },
+  del(k){ try { localStorage.removeItem(KEY + k); } catch(e){} }
 };
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const db = () => window.LL_DB || window.niapoDb || null;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Stars + falling caps */
+let device = store.get('-device');
+if (!device) { device = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now()); store.set('-device', device); }
+
+/* ---------- Scenery ---------- */
 (function(){
-  const s = $('stars'); let h = '';
-  for (let i = 0; i < 70; i++) {
-    h += '<i style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*55)+'%;animation-delay:'+(Math.random()*4)+'s;transform:scale('+(0.6+Math.random()*1.2)+')"></i>';
-  }
-  s.innerHTML = h;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const sky = document.querySelector('.sky');
-  for (let i = 0; i < 5; i++) {
+  let h = '';
+  for (let i = 0; i < 60; i++) h += '<i style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*50)+'%;animation-delay:'+(Math.random()*4)+'s;opacity:'+(.4+Math.random()*.6)+'"></i>';
+  $('stars').innerHTML = h;
+  if (reduce) return;
+  const sc = document.querySelector('.scene');
+  for (let i = 0; i < 4; i++) {
     const c = document.createElement('div');
-    c.className = 'cap'; c.setAttribute('aria-hidden','true');
-    c.style.left = (8 + Math.random()*84) + '%';
-    c.style.top = '0';
-    c.style.animationDelay = (i*1.8) + 's';
-    c.style.animationDuration = (8 + Math.random()*5) + 's';
-    c.style.width = (22 + Math.random()*18) + 'px';
+    c.className = 'cap';
+    c.style.left = (6 + Math.random()*88) + '%';
+    c.style.animationDuration = (10 + Math.random()*6) + 's';
+    c.style.animationDelay = (i * 2.6) + 's';
+    c.style.width = (20 + Math.random()*16) + 'px';
     c.innerHTML = '<svg viewBox="0 0 64 48"><use href="#capi"/></svg>';
-    sky.appendChild(c);
+    sc.appendChild(c);
   }
 })();
 
-/* Countdown */
-(function(){
-  const t = new Date(PARTY.start).getTime();
-  const pad = n => String(n).padStart(2,'0');
-  function tick(){
-    let d = Math.max(0, t - Date.now());
-    if (d === 0) { $('count').innerHTML = '<div style="padding:14px 20px"><b style="font-size:22px">It\'s party time 🎉</b></div>'; return; }
-    const days = Math.floor(d/864e5); d %= 864e5;
-    $('cd-d').textContent = days;
-    $('cd-h').textContent = pad(Math.floor(d/36e5)); d %= 36e5;
-    $('cd-m').textContent = pad(Math.floor(d/6e4)); d %= 6e4;
-    $('cd-s').textContent = pad(Math.floor(d/1e3));
-    setTimeout(tick, 1000);
-  }
-  tick();
-})();
-
-/* Pass */
-function passCode(){
-  const a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let c = '';
-  const r = (window.crypto && crypto.getRandomValues) ? crypto.getRandomValues(new Uint8Array(4)) : [0,0,0,0].map(()=>Math.random()*256|0);
-  for (const b of r) c += a[b % a.length];
-  return 'LL26-' + c;
+/* ---------- Views ---------- */
+function show(name){
+  ['intro','code','reward','host'].forEach(v => $('v-' + v).hidden = v !== name);
+  if (name === 'code') setTimeout(() => $('code').focus(), 350);
 }
+$('openCode').addEventListener('click', () => show('code'));
+document.querySelectorAll('[data-to]').forEach(b => b.addEventListener('click', () => show(b.dataset.to)));
+
+/* ---------- Unlock ---------- */
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function fail(msg){
+  $('err').classList.remove('ok');
+  $('err').textContent = msg;
+  const f = $('form'); f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake');
+}
+function busy(on){ $('go').disabled = on; $('goTxt').textContent = on ? 'Checking…' : 'Unlock'; }
+
+$('form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const code = $('code').value.replace(/\s/g,'').toUpperCase();
+  const guest = $('guest').value.trim().replace(/\s+/g,' ');
+  $('err').textContent = ''; $('err').classList.remove('ok');
+  if (!code) { fail('Type your code first.'); $('code').focus(); return; }
+  const client = db();
+  if (!client) { fail("Can't check codes right now. Check your connection and try again."); return; }
+
+  busy(true);
+  try {
+    // The host code needs no name: try it first, so the host isn't asked for one.
+    const { data, error } = await client.rpc('lastlast_unlock', { c: code, guest: guest || '—', device });
+    if (error) throw error;
+    if (data && data.host) { store.set('-host', code); busy(false); openHost(code); return; }
+    if (data && data.reason === 'name') { busy(false); $('err').textContent = 'Nice, the code works. Now add your name.'; $('err').classList.add('ok'); $('guest').focus(); return; }
+    if (!data || !data.ok) { busy(false); fail("That code doesn't open anything. Check your invite."); $('code').select(); return; }
+    if (guest.length < 2) {
+      busy(false); fail('Nice, the code works. Now add your name.'); $('guest').focus(); return;
+    }
+    busy(false);
+    store.set('-pass', data);
+    reveal(data, true);
+  } catch (err) {
+    busy(false);
+    console.error(err);
+    fail("Can't check codes right now. Check your connection and try again.");
+  }
+});
 
 function mapArt(){
-  return '<a class="map-art" href="'+esc(PARTY.mapsLink)+'" target="_blank" rel="noopener" aria-label="Open the location in Google Maps">' +
-    '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
-      '<rect width="400" height="300" fill="#efe8f7"/>' +
-      '<path d="M-10 210 C80 180 140 240 220 200 S350 150 420 170" stroke="#b9d7f2" stroke-width="22" fill="none"/>' +
-      '<g stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round"><path d="M0 90 H400"/><path d="M120 0 V300"/><path d="M290 0 C270 120 300 200 260 300"/><path d="M0 250 L400 40"/></g>' +
-      '<g fill="#d9f0d3"><rect x="20" y="110" width="80" height="60" rx="10"/><rect x="310" y="210" width="70" height="70" rx="10"/></g>' +
-      '<g fill="#e3dcef"><rect x="140" y="20" width="60" height="50" rx="8"/><rect x="215" y="20" width="60" height="50" rx="8"/><rect x="140" y="110" width="50" height="40" rx="8"/><rect x="20" y="20" width="80" height="50" rx="8"/></g>' +
-      '<g transform="translate(200 150)"><circle r="34" fill="#5b74dc" opacity=".2"/><path d="M0 18 C-18 -2 -22 -12 -22 -22 a22 22 0 0 1 44 0 c0 10 -4 20 -22 40z" transform="translate(0 -18)" fill="#0f2236"/><circle cy="-40" r="8" fill="#f2b84b"/></g>' +
-    '</svg><span class="btn sm tap">Tap for directions</span></a>';
+  return '<svg viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
+    '<rect width="400" height="120" fill="#efe8f7"/>' +
+    '<path d="M-10 90 C80 70 150 110 230 84 S350 60 420 70" stroke="#b9d7f2" stroke-width="16" fill="none"/>' +
+    '<g stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round"><path d="M0 40 H400"/><path d="M110 0 V120"/><path d="M300 0 C285 50 310 80 280 120"/><path d="M0 115 L400 10"/></g>' +
+    '<g fill="#d9f0d3"><rect x="20" y="52" width="70" height="30" rx="8"/><rect x="320" y="80" width="60" height="34" rx="8"/></g>' +
+    '<g fill="#e3dcef"><rect x="130" y="6" width="50" height="26" rx="6"/><rect x="190" y="6" width="50" height="26" rx="6"/><rect x="20" y="6" width="70" height="26" rx="6"/></g>' +
+    '<g transform="translate(200 62)"><circle r="26" fill="#5670db" opacity=".18"/><path d="M0 14 C-13 0 -16 -8 -16 -16 a16 16 0 0 1 32 0 c0 8 -3 15 -16 30z" transform="translate(0 -14)" fill="#0f2236"/><circle cy="-30" r="6" fill="#f4c75b"/></g>' +
+    '</svg>';
 }
 
-function renderPass(p){
-  $('pName').textContent = p.name;
-  $('pAdmit').textContent = p.guests > 1 ? 'Admits ' + p.guests + ' (you +' + (p.guests-1) + ')' : 'Admits 1';
-  $('pCode').textContent = p.code;
-  $('pVenue').textContent = PARTY.venueName;
-  if (window.qrcode) {
-    const q = qrcode(0, 'M');
-    q.addData('LASTLAST26|' + p.code + '|' + p.name + '|' + p.guests);
-    q.make();
-    $('pQr').innerHTML = q.createSvgTag({ cellSize: 4, margin: 1, scalable: true });
-  } else {
-    $('pQr').style.display = 'none';
-  }
-  $('dirBtn').href = PARTY.mapQuery
-    ? 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(PARTY.mapQuery)
-    : PARTY.mapsLink;
-  $('map').innerHTML = PARTY.mapQuery
-    ? '<iframe title="Map of the party location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=' + encodeURIComponent(PARTY.mapQuery) + '&z=16&output=embed"></iframe>'
+let pass = null;
+function reveal(p, celebrate){
+  pass = p;
+  const first = String(p.guest || '').split(' ')[0];
+  $('rName').textContent = first ? 'You\'re in, ' + first + '.' : 'You\'re in.';
+  const when = String(p.starts_at || 'Wed 25 Nov · 9:00 PM').split(' · ');
+  $('rWhen').innerHTML = when.map(esc).join('<br>');
+  $('rDress').textContent = p.dress_code || 'Casual';
+  $('rVenue').textContent = p.venue || 'The house';
+  $('rAddr').textContent = p.address ? p.address : 'Private · don\'t share';
+  const dir = p.map_query ? 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(p.map_query) : p.maps_link;
+  $('rDir').href = dir; $('rMap').href = dir;
+  $('rMapFill').innerHTML = p.map_query
+    ? '<iframe title="Map of the party location" loading="lazy" src="https://maps.google.com/maps?q=' + encodeURIComponent(p.map_query) + '&z=15&output=embed"></iframe>'
     : mapArt();
-  document.body.classList.add('has-pass');
+  $('rVia').textContent = p.label && p.label !== 'General' ? 'Invited via ' + p.label : 'Code ' + p.code;
+  show('reward');
+  if (celebrate) confetti();
 }
 
-const saved = store.get();
-if (saved && saved.name) renderPass(saved);
-
-$('form').addEventListener('submit', e => {
-  e.preventDefault();
-  const name = $('name').value.trim().replace(/\s+/g,' ');
-  if (name.length < 2) { $('err').textContent = 'Please enter your name.'; $('name').focus(); return; }
-  $('err').textContent = '';
-  const p = {
-    name,
-    phone: $('phone').value.trim(),
-    guests: +document.querySelector('input[name=guests]:checked').value,
-    code: passCode(),
-    at: new Date().toISOString()
-  };
-  store.set(p);
-  renderPass(p);
-  $('rsvp').scrollIntoView({ behavior: 'smooth', block: 'start' });
+$('rReset').addEventListener('click', () => {
+  store.del('-pass'); pass = null;
+  $('code').value = ''; $('guest').value = '';
+  show('code');
 });
 
-$('resetBtn').addEventListener('click', () => {
-  store.clear();
-  document.body.classList.remove('has-pass');
-  $('name').value = ''; $('name').focus();
-});
-
-$('saveBtn').addEventListener('click', () => window.print());
-
-$('calBtn').addEventListener('click', () => {
+$('rCal').addEventListener('click', () => {
+  if (!pass) return;
   const f = d => new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
-  const ics = [
-    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//lastlast26//EN','BEGIN:VEVENT',
-    'UID:lastlast26-' + Date.now() + '@lastlast26',
-    'DTSTAMP:' + f(Date.now()),
-    'DTSTART:' + f(PARTY.start), 'DTEND:' + f(PARTY.end),
-    'SUMMARY:lastlast26 · Graduation Party',
-    'LOCATION:' + PARTY.mapsLink,
-    'DESCRIPTION:Show your access pass at the door. Directions: ' + PARTY.mapsLink,
-    'END:VEVENT','END:VCALENDAR'
-  ].join('\r\n');
+  const loc = (pass.address ? pass.address + ' – ' : '') + (pass.maps_link || '');
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//lastlast26//EN','BEGIN:VEVENT',
+    'UID:lastlast26-' + device + '@lastlast26', 'DTSTAMP:' + f(Date.now()),
+    'DTSTART:' + f(START), 'DTEND:' + f(END),
+    'SUMMARY:lastlast/2026 · Graduation premium event',
+    'LOCATION:' + loc,
+    'DESCRIPTION:Dress code: ' + (pass.dress_code || 'Casual') + '. Directions: ' + (pass.maps_link || ''),
+    'END:VEVENT','END:VCALENDAR'].join('\r\n');
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
   a.download = 'lastlast26.ics';
   document.body.appendChild(a); a.click(); a.remove();
 });
+
+/* ---------- Host ---------- */
+let hostCode = null;
+async function openHost(code){
+  hostCode = code;
+  show('host');
+  await loadStats();
+}
+function ago(t){
+  const s = (Date.now() - new Date(t).getTime()) / 1000;
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s/60) + ' min ago';
+  if (s < 86400) return Math.floor(s/3600) + ' h ago';
+  return new Date(t).toLocaleDateString(undefined, { day:'numeric', month:'short' });
+}
+async function loadStats(){
+  const client = db(); if (!client) return;
+  $('hRefresh').textContent = 'Loading…';
+  const { data, error } = await client.rpc('lastlast_stats', { h: hostCode });
+  $('hRefresh').textContent = 'Refresh';
+  if (error || !data) { store.del('-host'); show('code'); fail('Host code not accepted.'); return; }
+  $('kTotal').textContent = data.total; $('kDev').textContent = data.devices; $('kMiss').textContent = data.misses;
+  const max = Math.max(1, ...data.codes.map(c => c.n));
+  $('bars').innerHTML = data.codes.map(c =>
+    '<div class="bar"><span>' + esc(c.label) + ' <em>' + esc(c.code) + (c.active ? '' : ' · off') + '</em></span><span>' + c.n + '</span>' +
+    '<div class="track"><div class="fill" style="width:' + (c.n / max * 100) + '%"></div></div></div>').join('');
+  $('list').innerHTML = data.recent.length
+    ? data.recent.map(r => '<div class="li">' + esc(r.guest) + ' <span>' + esc(r.code) + ' · ' + ago(r.created_at) + '</span></div>').join('')
+    : '<p class="empty">Nobody yet. Share the link.</p>';
+}
+$('hRefresh').addEventListener('click', loadStats);
+$('hExit').addEventListener('click', () => { store.del('-host'); hostCode = null; $('code').value = ''; show('intro'); });
+
+/* ---------- Confetti ---------- */
+function confetti(){
+  if (reduce) return;
+  const c = $('fx'), x = c.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
+  c.width = innerWidth * dpr; c.height = innerHeight * dpr; x.scale(dpr, dpr);
+  const cols = ['#f4c75b','#fff1c4','#5670db','#eaa2d6','#0f2236','#ffffff'];
+  const P = Array.from({ length: 140 }, () => ({
+    x: innerWidth / 2, y: innerHeight * .42,
+    vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4,
+    w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+    r: Math.random() * 6, vr: (Math.random() - .5) * .3, c: cols[Math.random() * cols.length | 0]
+  }));
+  const t0 = performance.now();
+  (function frame(t){
+    x.clearRect(0, 0, innerWidth, innerHeight);
+    for (const p of P) {
+      p.vy += .32; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.w/2, -p.h/2, p.w, p.h); x.restore();
+    }
+    if (t - t0 < 3200) requestAnimationFrame(frame); else x.clearRect(0, 0, innerWidth, innerHeight);
+  })(t0);
+}
+
+/* ---------- Returning visitors ---------- */
+(function(){
+  const h = store.get('-host');
+  if (h) { openHost(h); return; }
+  const p = store.get('-pass');
+  if (p && p.ok) reveal(p, false);
+})();
 </script>
 </body>
 </html>
